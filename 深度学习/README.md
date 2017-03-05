@@ -3,6 +3,7 @@
 ## 基础环境
 
 * Ubuntu16.04 + GTX1060 + cuda8.0 + cudnn5.1 + python3.5 + tensorflow0.12
+
 ---
 
 ## 基本框架
@@ -26,4 +27,5 @@
  * 使 loss 最优的 Variable 与 model 组合成分类器模型。
 
 **关键点在于映射模型（CNN），损失函数（CrossEntropy），优化算法（GradientDescend）的设计与选择**
+
 ---
