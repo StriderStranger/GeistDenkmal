@@ -28,4 +28,6 @@
 
 **关键点在于映射模型（CNN），损失函数（CrossEntropy），优化算法（GradientDescend）的设计与选择**
 
+![BaseFrame.png](https://github.com/StriderStranger/GeistDenkmal/blob/master/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/BaseFrame.png)
+
 ---
