@@ -10,6 +10,8 @@
 
 ---
 
+## TF简介
+
 TensorFlow的运作原理是一种静态学习机制，由两部分构成：计算图谱(Graph)，会话(Session)。
 
 首先，要在Graph中架构整个计算流程，然后将Graph交给Session运行。底层中，Seesion是将Graph中定义的运算交予GPU并行处理，最后将结果统一返回给程序。这样可以充分发挥GPU的运算能力，并尽可能减少数据传输造成的时间浪费。
@@ -65,3 +67,5 @@ with tf.Session(graph=graph) as mySess:
 
 ---
 
+## 全连接模型（FullyConnected）
+全连接模型属于线性模型的一种：$$y = w * x + b$$
