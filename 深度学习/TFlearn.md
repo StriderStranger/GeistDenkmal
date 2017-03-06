@@ -108,6 +108,7 @@ gp@gp-pc:~$ tensorboard --logdir board
 tf中的构造过程如下：
 
 1. 定义一个权重矩阵weights
+2. hehe
 
 ```
 fc_weights = tf.Variable(tf.truncated_normal([shape[1] * shape[2] * shape[3],hidden],stddev=0.1))
