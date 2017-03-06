@@ -31,3 +31,14 @@
 ![BaseFrame.png](https://github.com/StriderStranger/GeistDenkmal/blob/master/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/BaseFrame.png)
 
 ---
+
+## 数据集结构
+    图像数据集的结构（sample_image）：    
+图像集一般为4维张量[shape(0),shape(1),shape(2),shape(3)],分别表示 [样本数，长度，宽度，通道数]。
+
+    标签数据集的结构（label）：
+标签集为2维张量[shape(0),shape(1)],分别表示 [样本数，类型码]
+
+---
+
+
