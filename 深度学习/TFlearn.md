@@ -125,3 +125,16 @@ biases是一维向量，长度和 fc_weights 的 hidden 一致.若该层是神�
 fc_model = tf.matmul(samples, fc_weights) + fc_biases
 ```
 使用matmul进行矩阵乘法运算。注意这里的 samples 是展开 shape[1,2,3] 后的数据 batch.
+
+## knn模型
+* 4个数据集：TrainData，TrainLabel，TestData，TestLabel
+* 基本运算：求两个样本的距离
+```
+distance = tf.reduce_sum(tf.abs(tf.add(train_samples, tf.neg(test_samples))))
+```
+* knn模型没有参数，所以不需要建立loss和optimizer
+* 在session中根据测试集TestData建立for循环，每次循环计算所有训练集和一个测试集的距离向量，
+距离最小的训练样本对应的标签即为该测试数据的logits
+```
+ pred = tf.argmin(distance,0)
+```
