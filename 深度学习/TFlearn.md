@@ -108,12 +108,14 @@ gp@gp-pc:~$ tensorboard --logdir board
 tf中的构造过程如下：
 
 1. **定义一个权重矩阵weights**
+
 ```
 fc_weights = tf.Variable(tf.truncated_normal([shape[1] * shape[2] * shape[3],hidden],stddev=0.1))
 ```
 这里 `shape[1] * shape[2] * shape[3]` 表示将一个样本数据展开成一维，`hidden` 是隐藏层的大小，通常将W初始化成正则分布。
 
-2. 定义一个偏差向量biases
+2. **定义一个偏差向量biases**
+
 ```
 fc_biases = tf.Variable(tf.constant(0.1,shape=[hidden]))
 ```
@@ -121,6 +123,7 @@ biases是一维向量，长度和 fc_weights 的 hidden 一致.若该层是神�
 例如，labels 是 one-hot 数据，维度是10,则 hidden=10.
 
 3. **定义模型**
+
 ```
 fc_model = tf.matmul(samples, fc_weights) + fc_biases
 ```
