@@ -113,7 +113,7 @@ fc_weights = tf.Variable(tf.truncated_normal([shape[1] * shape[2] * shape[3],hid
 ```
 这里 `shape[1] * shape[2] * shape[3]` 表示将一个样本数据展开成一维，`hidden` 是隐藏层的大小，通常将W初始化成正则分布。
 
-2. **定义一个偏差向量biases**
+2. 定义一个偏差向量biases
 ```
 fc_biases = tf.Variable(tf.constant(0.1,shape=[hidden]))
 ```
