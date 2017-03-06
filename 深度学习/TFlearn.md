@@ -67,5 +67,61 @@ with tf.Session(graph=graph) as mySess:
 
 ---
 
+## TF可视化
+Tensorboard是一个非常强大的可视化工具。它将计算图谱和训练中参数的变化过程记录为events文件，并可以通过浏览器查看。
+* **在初始化结尾创建一个FileWriter**
+```
+writer = tf.summary.FileWriter('./board',graph=graph)
+```
+注意，这行代码要放在graph创建之后。
+* **添加名称封装图谱节点**
+```
+with tf.name_scope('INPUT'):
+```
+对于一些重要的节点添加名称并模块化，可以更有条理的分析计算图谱。
+* **为变量添加summary**
+```
+tf.scalar_summary("loss",loss)                  #标量
+tf.histogram_summary('fc_weights',fc_weights)   #直方图
+```
+在定义图谱的结尾，通过定义merge-summary运算，将个变量的summary聚合到一起。
+```
+merged = tf.merge_all_summaries()
+```
+因为merge-summary是运算，所以要到 Session 中运行。最后在将运算结果添加到FileWriter里。
+```
+summary = mySess.run(merged)
+writer.add_summary(summary,i)   #此步要在for循环中多次执行
+```
+* **shell中可以打开events的链接**
+```
+gp@gp-pc:~$ tensorboard --logdir board
+```
+*注意：merge-summary是一个运算，有定义，要运行，还要写道board记录文件中。*
+
+---
+
+
 ## 全连接模型（FullyConnected）
-全连接模型属于线性模型的一种：$$y = w * x + b$$
+全连接模型属于线性模型的一种：$y=w*x+b$,其中x，y是数据集和标签集，W，b是模型参数。
+
+tf中的构造过程如下：
+
+1. **定义一个权重矩阵weights**
+```
+fc_weights = tf.Variable(tf.truncated_normal([shape[1] * shape[2] * shape[3],hidden],stddev=0.1))
+```
+这里 `shape[1] * shape[2] * shape[3]` 表示将一个样本数据展开成一维，`hidden` 是隐藏层的大小，通常将W初始化成正则分布。
+
+2. **定义一个偏差向量biases**
+```
+fc_biases = tf.Variable(tf.constant(0.1,shape=[hidden]))
+```
+biases是一维向量，长度和 fc_weights 的 hidden 一致.若该层是神经网络的最后一层，hidden 的取值应和 labels 的维度一致。
+例如，labels 是 one-hot 数据，维度是10,则 hidden=10.
+
+3. **定义模型**
+```
+fc_model = tf.matmul(samples, fc_weights) + fc_biases
+```
+使用matmul进行矩阵乘法运算。注意这里的 samples 是展开 shape[1,2,3] 后的数据 batch.
