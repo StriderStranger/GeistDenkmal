@@ -73,7 +73,7 @@ Tensorboard是一个非常强大的可视化工具。它将计算图谱和训练
 ```
 writer = tf.summary.FileWriter('./board',graph=graph)
 ```
-注意，这行代码要放在graph创建之后。
+*注意，这行代码要放在graph创建之后。*
 * **添加名称封装图谱节点**
 ```
 with tf.name_scope('INPUT'):
