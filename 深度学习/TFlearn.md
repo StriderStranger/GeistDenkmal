@@ -128,9 +128,14 @@ fc_model = tf.matmul(samples, fc_weights) + fc_biases
 
 ## knn模型
 * 4个数据集：TrainData，TrainLabel，TestData，TestLabel
-* 基本运算：求两个样本的距离
+* 基本运算：
+求两个样本的距离L1
 ```
-distance = tf.reduce_sum(tf.abs(tf.add(train_samples, tf.neg(test_samples))))
+distance = tf.reduce_sum(tf.abs(tf.add(train_samples, tf.neg(test_samples))))   #这里train_samples是2维样本，test_samples是1维样本
+```
+求两个样本的距离L2
+```
+distance = tf.reduce_sum(tf.square(tf.add(train_samples, tf.neg(test_samples))))
 ```
 * knn模型没有参数，所以不需要建立loss和optimizer
 * 在session中根据测试集TestData建立for循环，每次循环计算所有训练集和一个测试集的距离向量，
@@ -138,3 +143,8 @@ distance = tf.reduce_sum(tf.abs(tf.add(train_samples, tf.neg(test_samples))))
 ```
  pred = tf.argmin(distance,0)
 ```
+* 距离选择
+    * L1距离：
+    * L2距离：
+
+* 与其只找最相近的那1个图片的标签，也可以找最相似的k个图片的标签，然后让他们针对测试图片进行投票，最后把票数最高的标签作为对测试图片的预测。
