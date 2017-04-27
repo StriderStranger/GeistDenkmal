@@ -1,7 +1,7 @@
 # 优美的代码结构
 
 ## 递归生成一棵树
-```
+```python
 def createTree():
     if 检测到达叶子节点：
         return;
@@ -12,7 +12,7 @@ def createTree():
 ```
 
 ## 统计直方图（频率分布）
-```
+```python
 def histgram(data):
     hist = {}       # hist是字典
     for item in data:
@@ -22,7 +22,7 @@ def histgram(data):
 ```
 
 ## 两种优雅的传参技巧
-```
+```python
 def foo(x,y):
     return x+y
 # 位置传参
@@ -35,7 +35,7 @@ foo(**kwargs)
 
 ## 函数闭包特性
 嵌套定义在非全局作用域里面的函数能够记住它在被定义的时候它所处的封闭命名空间。
-```
+```python
 def outer():
 	x = 1
 	def inner():
@@ -47,7 +47,7 @@ foo()			# 1 : 虽然x消亡了,但inner闭包了x,在返回时记录下来
 因为外层函数可以返回内层函数,而且有闭包特性.所以可以把闭包看作内部函数的附加环境.
 
 ## 装饰器 [诱导](http://python.jobbole.com/81683/)
-```
+```python
 def outer(some_func):
 	def inner():
 		print('before some_func')
@@ -61,13 +61,13 @@ foo()
 ```
 some_func是inner的闭包,outer对foo进行了一些'加强'变成了inner,然后返回给新的foo.
 或这样定义:
-```
+```python
 @outer
 def foo()
 	return 1
 ```
 例:定义一个记录任意函数参数的装饰器logger
-```
+```python
 def logger(func):
     def inner(*args,**kwargs):
         print('Arguments were: %s,%s' % (args,kwargs))
@@ -81,7 +81,7 @@ def foo(x,y,m=2,n=4):
 
 
 ## 命令行参数解析
-```
+```python
 for i in range(1,len(argvs),2):
 	if argvs[i] == '-fromfile' : self.fromfile = argvs[i+1]
 	if argvs[i] == '-tofile_img' : self.tofile_img = argvs[i+1] ; self.filewrite_img = True
