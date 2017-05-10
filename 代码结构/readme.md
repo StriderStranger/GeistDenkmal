@@ -119,3 +119,35 @@ class Queue(object):
   def size(self):
     return len(self.items)
 ```
+
+## 二值图区域生长算法
+(1):定义一个area队列,收入种子点; 
+(2):每次不放回地取一个点p并判断4邻点neighbor,若neighbor在I上是1,在M上是0,就收入area,并令M[neighbor]=1; 
+(3):循环(2)直到area为空,表示种子点生长完毕;
+```python
+def areaGrow(I):
+    m,n = I.shape
+    M = np.zeors(I.shape)		# mask:记录处理过的点
+	seed[6] = {(12,35), (12,80), (12,128), (30,12), (30,58), (30,104)}
+	area = Queue()
+	neighbor = 4*['']
+	for i in range(6):
+		area.enqueue(seed[i])
+        seedWithout = seed.copy(); seedWithout.pop(i)
+		while area.isEmpty() == False:
+			p = area.dequeue()
+            if p[0]<=2 or p[0]>=m or p[1]<=2 or p[1]>=n:         # 如果p到了边界,就直接跳过
+                continue
+			neighbor[0] = (p[0]-1,p[1])
+            neighbor[1] = (p[0]+1,p[1])
+            neighbor[2] = (p[0],p[1]-1)
+            neighbor[3] = (p[0],p[1]+1)
+			for j in range(4):
+				if neighbor[j] in seed.without(i):
+					# 说明两个种子点连通,可以作相应的处理
+                    pass
+				if I[neighbor[j]] == 255 && M[neighbor[j]] == 0
+					area.enqueue(neighbor[j])
+					M[neighbor[j]] = 1				# 入队列后就立刻标记!!
+	return M
+```
