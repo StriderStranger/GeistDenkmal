@@ -89,7 +89,33 @@ for i in range(1,len(argvs),2):
 ```
 
 ## 使用mask处理图像
+```python
 from skimage import data
 camera = data.camera()
 mask = camera < 87
 camera[mask] = 255
+```
+
+## 方便好用的简单队列Queue
+```python
+class Queue(object):
+  '''模拟队列'''
+  def __init__(self):
+    self.items = []
+  
+  def isEmpty(self):
+    return self.items == []
+  
+  def enqueue(self, item):
+  '''放入一个元素'''
+    self.items.insert(0,item)
+
+  def dequeue(self):
+  '''取出并删除元素'''
+    if self.isEmpty():
+      return False
+    return self.items.pop()
+
+  def size(self):
+    return len(self.items)
+```
