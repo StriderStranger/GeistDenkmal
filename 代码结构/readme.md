@@ -151,3 +151,13 @@ def areaGrow(I):
 					M[neighbor[j]] = 1				# 入队列后就立刻标记!!
 	return M
 ```
+
+# 构造一个稀疏向量 np.random.shuffle
+先构造一个索引序列inds，然后随机打乱shuffle，对索引的切片操作就是随机的了。
+```python
+n_features = 200
+coef = 3 * np.random.randn(n_features)
+inds = np.arange(n_features)
+np.random.shuffle(inds)
+coef[inds[10:]] = 0  # sparsify coef
+```
