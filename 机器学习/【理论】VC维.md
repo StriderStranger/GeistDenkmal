@@ -1,7 +1,7 @@
-## VC维
+# VC维
 vc维是衡量机器学习算法优劣和过拟合程度的一种理论.
 看到一篇博客在介绍[VC维的来龙去脉](http://www.flickering.cn/machine_learning/2015/04/vc%E7%BB%B4%E7%9A%84%E6%9D%A5%E9%BE%99%E5%8E%BB%E8%84%89/),形式化而详细地讲解了VC维的诞生和意义.我便把自己的理解写下:
-### Hoeffding不等式
+## Hoeffding不等式
 不论是分类还是回归,都在处理抽样数据,通过样本训练出模型,并应用到总体上.也就是train和test过程.涉及到总体和样本就自然会引出一个问题:样本的统计特征是否能准确反映出总体的统计特征?有多准确呢?
 
 ![bin_sample](https://github.com/StriderStranger/GeistDenkmal/blob/master/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/res/bin_sample.png)
@@ -27,10 +27,10 @@ Hoeffding不等式在一定程度上回答了这个问题.Hoeffding不等式是�
 
 这就说明,模型对样本的损失与对总体的损失间的差距和样本数N,假设数M密切相关.
 
-### 学习可行的两个核心条件
+## 学习可行的两个核心条件
 **什么情况下Learning是可行的?**
 1. 如果假设空间H的size M是有限的,当N足够大时,那么对假设空间中任意一个h,Eout(h)约等于Ein(h);
 2. 利用算法A从假设空间H中,挑选出一个h,使得Ein(h)接近于0,那么PAC而言,Eout(h)也接近于0;
-### Effective Number
-### Break Point & Shatter
-### VC维
+## Effective Number
+## Break Point & Shatter
+## VC维
