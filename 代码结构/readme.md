@@ -4,7 +4,7 @@
 ```python
 def createTree():
     if 检测到达叶子节点：
-        return;
+        return
     else:
         将节点分裂成n份
         for i in range(n):
@@ -20,6 +20,12 @@ def histgram(data):
             hist[item] = 0
         hist[item] += 1
 ```
+```python
+N = len(data)
+classes, hist = np.unique(data[:,-1], return_counts=True)
+hist = hist / N
+```
+
 
 ## 两种优雅的传参技巧
 ```python
