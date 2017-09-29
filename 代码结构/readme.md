@@ -25,7 +25,7 @@ N = len(data)
 classes, hist = np.unique(data[:,-1], return_counts=True)
 hist = hist / N
 ```
-
+测试一下
 
 ## 两种优雅的传参技巧
 ```python
