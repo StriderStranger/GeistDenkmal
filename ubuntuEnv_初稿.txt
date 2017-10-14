@@ -1,0 +1,127 @@
+手动
+调整显示比例（显示=1.25,外观=32），修改输入法，安装显卡驱动
+
+更新基本依赖项
+sudo apt-get -f full-upgrade
+sudo gedit /etc/apt/sources.list
+
+
+时间同步
+sudo timedatectl set-local-rtc 1
+
+绑定python3
+echo alias python=python3 >> ~/.bashrc
+
+source ~/.bashrc
+
+
+安装easystroke
+sudo apt-get install easystroke
+
+安装vim
+sudo apt-get install vim
+
+安装notepadqq
+sudo add-apt-repository ppa:notepadqq-team/notepadqq
+
+sudo apt-get update
+
+sudo apt-get install notepadqq
+
+安装vscode
+sudo add-apt-repository ppa:ubuntu-desktop/ubuntu-make
+
+sudo apt-get update
+
+sudo apt-get install ubuntu-make
+
+sudo umake web visual-studio-code
+
+安装chrome
+sudo wget http://www.linuxidc.com/files/repo/google-chrome.list -P /etc/apt/sources.list.d/
+
+wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+
+sudo apt-get update
+
+sudo apt-get install google-chrome-stable
+
+安装网易云音乐
+sudo dpkg -i netease-cloud-music_0.9.0-2_amd64.deb
+
+sudo apt-get install -f “如果安装失败，解决依赖”
+
+安装并配置git
+sudo apt-get install git
+
+git config --global user.name "iris"
+
+git config --global user.email "1421720828@qq.com"
+
+免除每次push要输入帐号： ～目录下创建并添加
+touch .git-credentials
+gedit .git-credentials					
+https://StriderStranger:15203514781mj@github.com
+
+git config --global credential.helper store
+gedit .gitconfig		查看结果
+
+TF-GPU环境搭建
+sudo dpkg -i cuda-repo-ubuntu1604-8-0-local-ga2_8.0.61-1_amd64.deb 
+sudo apt-get update
+sudo apt-get install cuda
+
+sudo gedit ~/.bash_profile
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64"
+export CUDA_HOME=/usr/local/cuda
+source ~/.bash_profile
+
+cp cudnn-8.0-linux-x64-v5.1.solitairetheme8 cudnn-8.0-linux-x64-v5.1.tgz
+tar -xvf cudnn-8.0-linux-x64-v5.1.tgz
+sudo cp cuda/include/cudnn.h /usr/local/cuda/include
+sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
+sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
+
+
+gcc,g++降版本
+sudo apt-get install g++-4.9
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.9 20
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 10
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.9 20
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-5 10
+sudo update-alternatives --install /usr/bin/cc cc /usr/bin/gcc 30
+sudo update-alternatives --set cc /usr/bin/gcc
+sudo update-alternatives --install /usr/bin/c++ c++ /usr/bin/g++ 30
+sudo update-alternatives --set c++ /usr/bin/g++
+
+
+python环境搭建
+sudo apt-get install python3-pip
+pip3 install --upgrade pip
+
+sudo pip3 install numpy
+sudo pip3 install scipy
+sudo pip3 install matplotlib
+sudo pip3 install scikit-learn
+sudo pip3 install pandas
+sudo pip3 install scikit-imagepythonim
+sudo apt-get install python3-tk
+
+安装TF
+sudo apt-get install libcupti-dev
+
+
+安装opencv
+git clone https://github.com/opencv/opencv.git
+cd opencv
+mkdir build
+cd build
+
+sudo apt-get install build-essential
+sudo apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
+sudo apt-get install python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev
+
+cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local PYTHON3_EXECUTABLE = /usr/bin/python3 PYTHON_INCLUDE_DIR = /usr/include/python3.5 PYTHON_INCLUDE_DIR2 = /usr/include/i386-linux-gnu/python3.5m PYTHON_LIBRARY = /usr/bin/i386-linux-gnu-python3/libpython3.5m.so PYTHON3_NUMPY_INCLUDE_DIRS = /usr/local/lib/python3.5/dist-packages/numpy/core/include/ ..
+
+make
+sudo make install
