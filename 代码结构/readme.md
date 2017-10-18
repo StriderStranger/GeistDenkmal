@@ -38,6 +38,13 @@ kwargs={'x':2,'y':3}
 foo(**kwargs)
 ```
 
+## 按values排序字典
+```python
+name = {'a':4, 'b':23, 'c':6, 'd':13, 'e':2}
+sorted(name.items(), key=lambda e: e[1], reverse=True)
+# 这里返回的不是字典，而是列表
+```
+
 ## 函数闭包特性
 嵌套定义在非全局作用域里面的函数能够记住它在被定义的时候它所处的封闭命名空间。
 ```python
