@@ -93,6 +93,7 @@ sudo update-alternatives --install /usr/bin/cc cc /usr/bin/gcc 30
 sudo update-alternatives --set cc /usr/bin/gcc
 sudo update-alternatives --install /usr/bin/c++ c++ /usr/bin/g++ 30
 sudo update-alternatives --set c++ /usr/bin/g++
+gcc --version 
 
 
 python环境搭建
@@ -141,3 +142,24 @@ sudo service lightdm restart
 查看是否成功安装:
 glxinfo | grep rendering
 nvidia-smi
+
+解决分辨率问题:
+xrandr (查看设备名称和可用的分辨率)
+cvt 1920 1080  (得到Modeline后面的信息)
+xrandr --newmode "1920x1080_60.00"  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync
+xrandr --addmode 设备名称 "1920x1080_60.00"
+xrandr --output 设备名称 --mode "1920x1080_60.00"
+sudo gedit ~/.profile
+添加 cvt 1920 1080  (得到Modeline后面的信息)
+    xrandr --newmode "1920x1080_60.00"  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync
+    xrandr --addmode 设备名称 "1920x1080_60.00"
+    xrandr --output 设备名称 --mode "1920x1080_60.00"
+
+
+linux的环境配置文件
+/etc/profile
+~/.profile 
+/etc/bash.bashrc(/etc/bashrc) 
+~/.bashrc 
+~/.bash_profile
+http://blog.csdn.net/jirryzhang/article/details/70833544
