@@ -125,3 +125,19 @@ cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local PYTHON3_EXECU
 
 make
 sudo make install
+
+
+NVIDIA 驱动安装:
+ctrl+alt+F1进入tty1界面;
+sudo apt-get remove-nvidia-*
+sudo apt-get autoremove
+sudo nvidia-uninstall
+重启reboot,再次进入tty1界面;
+sudo service lightdm stop
+sudo ./NVIDIA-Linux-x86_64-xxx.xx.run -no-x-check -no-nouveau-check -no-opengl-files
+sudo service lightdm restart
+最重要的一步，安装程序问你是否使用nv的xconfig文件，这里一点要选yes，否则在启动x-window时不会使用nv驱动。
+
+查看是否成功安装:
+glxinfo | grep rendering
+nvidia-smi
