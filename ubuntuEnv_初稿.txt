@@ -132,6 +132,12 @@ make
 sudo make install
 
 
+安装并使用ipython notebook
+sudo pip3 install ipython
+sudo pip3 install "ipython[notebook]"
+ipython nootbook
+
+
 NVIDIA 驱动安装:
 ctrl+alt+F1进入tty1界面;
 sudo apt-get remove-nvidia-*
