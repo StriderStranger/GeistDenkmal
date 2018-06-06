@@ -164,7 +164,7 @@ def areaGrow(I):
 	return M
 ```
 
-# 构造一个稀疏向量 np.random.shuffle
+## 构造一个稀疏向量 np.random.shuffle
 先构造一个索引序列inds，然后随机打乱shuffle，对索引的切片操作就是随机的了。
 ```python
 n_features = 200
@@ -172,4 +172,16 @@ coef = 3 * np.random.randn(n_features)
 inds = np.arange(n_features)
 np.random.shuffle(inds)
 coef[inds[10:]] = 0  # sparsify coef
+```
+
+
+## 训练数据和测试数据同步随机打乱
+还是使用inds来索引
+```python
+x = np.random.randint(10, 40, (10))
+y = np.random.randint(0, 4, (10))
+inds = np.arange(len(x))
+np.random.shuffle(inds)
+shuffled_x = x[inds]
+shuffled_y = y[inds]
 ```
