@@ -1,9 +1,36 @@
+ubuntu装机注意事项：
+0. 使用window的工具diskpart可以将空闲的磁盘空间改成逻辑分区
+1. windows分区时不要在给linux预留的空间上新建卷
+2. ubuntu分区时分成 “/boot，交换空间，/”三个分区，其中注意要将引导文件放在/boot分区
+3. windows安装easybcd，添加linux的引导项，其中选择/boot那个分区
+4. 若在更新ubuntu后导致无法正确引导重启，可以在easybcd中删除，重新添加引导项
+
+
+
+首先更换镜像源
+sudo gedit /etc/apt/sources.list
+
+例如添加16.04(Xenial)版本的阿里云镜像源
+# aliyun sources
+deb http://mirrors.aliyun.com/ubuntu/ xenial main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ xenial-proposed main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ xenial main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ xenial-proposed main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse
+
+更新
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get -f full-upgrade
+
+
 手动
 调整显示比例（显示=1.25,外观=32），修改输入法，安装显卡驱动
-
-更新基本依赖项
-sudo apt-get -f full-upgrade
-sudo gedit /etc/apt/sources.list
 
 
 时间同步
@@ -112,8 +139,17 @@ sudo pip3 install pandas
 sudo pip3 install scikit-imagepythonim
 sudo apt-get install python3-tk
 
-安装TF
-sudo apt-get install libcupti-dev
+
+关于安装pip3后无法正常使用：
+打开报错位置。
+cd /usr/bin/pip3
+
+修改后
+from pip import __main__
+
+if __name__ == '__main__':
+    sys.exit(__main__._main())
+
 
 
 安装opencv
@@ -140,7 +176,7 @@ ipython nootbook
 
 NVIDIA 驱动安装:
 ctrl+alt+F1进入tty1界面;
-sudo apt-get remove-nvidia-*
+sudo apt-get remove nvidia-*
 sudo apt-get autoremove
 sudo nvidia-uninstall
 重启reboot,再次进入tty1界面;
