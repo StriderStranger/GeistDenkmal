@@ -203,12 +203,22 @@ sudo gedit ~/.profile
 
 
 linux的环境配置文件
-/etc/profile
-~/.profile 
-/etc/bash.bashrc(/etc/bashrc) 
-~/.bashrc 
-~/.bash_profile
-http://blog.csdn.net/jirryzhang/article/details/70833544
+env 查看环境变量
+/etc/profile: 此文件为系统的每个用户设置环境信息,当用户第一次登录时,该文件被执行.并从/etc/profile.d目录的配置文件中搜集shell的设置.
+/etc/bashrc:  为每一个运行bash shell的用户执行此文件.当bash shell被打开时,该文件被读取.
+~/.bash_profile: 每个用户都可使用该文件输入专用于自己使用的shell信息,当用户登录时,该文件仅仅执行一次!默认情况下,他设置一些环境变量,执行用户的.bashrc文件.
+~/.bashrc: 该文件包含专用于你的bash shell的bash信息,当登录时以及每次打开新的shell时,该该文件被读取.
+~/.bash_logout: 当每次退出系统(退出bash shell)时,执行该文件.
+~/.profile
+
+注意： ~/.bash_profile中设置的环境变量不会自动执行，每次都要source启动。
+    所以要在~/.bashrc的末尾添加 source ~/.bash_profile
+
+我的~/.bash_profile:
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64"
+export CUDA_HOME=/usr/local/cuda
+export PYTHONDONTWRITEBYTECODE=1
+
 
 
 
