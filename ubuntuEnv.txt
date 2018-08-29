@@ -225,3 +225,14 @@ export PYTHONDONTWRITEBYTECODE=1
 一个好用的画图软件
 sudo apt-get update
 sudo apt-get install kolourpaint4
+
+
+
+定制终端和vim
+1. sudo apt-get install terminator
+2. 修改字体，背景透明度，颜色(黑底白字)，调色版(Rxvt)
+3. echo $PS1
+4. gedit ~/.bashrc  修改其中的PS1代码
+在 xterm*|rxvt*) 后面添加：
+PS1="${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;36m\]\w\[\033[00m\]\$"
+这样可以调整终端的关键字颜色
