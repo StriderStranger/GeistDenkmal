@@ -1,0 +1,26 @@
+64位系统添加i386架构
+查看主体架构 
+dpkg --print-architecture
+查看客体架构 
+dpkg --print-foreign-architectures
+添加i386架构
+sudo dpkg --add-architecture i386
+删除i386架构（这步没有）
+sudo dpkg --remove-architecture i386
+
+sudo apt-get update
+sudo apt-get dist-upgrade
+
+
+安装wine-hq
+wget -nc https://dl.winehq.org/wine-builds/Release.key
+sudo apt-key add Release.key
+sudo apt-add-repository https://dl.winehq.org/wine-builds/ubuntu/
+sudo apt-add-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ xenial main'
+sudo apt-get update
+sudo apt-get install --install-recommends winehq-stable
+
+
+安装playonlinux
+sudo apt-get update
+sudo apt-get install playonlinux

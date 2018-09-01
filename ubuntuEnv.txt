@@ -236,3 +236,17 @@ sudo apt-get install kolourpaint4
 在 xterm*|rxvt*) 后面添加：
 PS1="${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;36m\]\w\[\033[00m\]\$"
 这样可以调整终端的关键字颜色
+
+
+关于卷boot剩余容量不足：
+查看boot中有哪些linux版本
+dpkg --get-selections |grep linux-image
+查看当前使用的版本
+uname -a
+删除不需要的版本
+sudo apt-get purge linux-image-4.4.0-83-generic
+sudo apt-get purge linux-image-4.8.0-36-generic
+sudo apt-get purge linux-image-extra-4.4.0-83-generic
+sudo apt-get purge linux-image-extra-4.8.0-58-generic
+查看磁盘空间
+df
